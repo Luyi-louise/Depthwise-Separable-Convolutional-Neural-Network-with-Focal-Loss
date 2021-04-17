@@ -38,10 +38,7 @@ encoding = {'Atrial_flutter': 1,
             'Normal_sinus_rhythm': 17}
 
 model = define_model()
-# model.load_weights('models-cnn3/012-0.007-0.999-0.002-0.999.hdf5')
-# model.load_weights('models-fl-cnn1/017-0.010-0.988-0.001-0.997.hdf5')
-# model.load_weights('models-dsc-cnn1/024-0.006-0.999-0.002-1.000.hdf5')
-model.load_weights('models-alpha=0.25-gamma=3/026-0.008-0.988-0.001-0.997.hdf5')
+model.load_weights('models/.hdf5')
 
 with open('X_data.pkl', 'rb') as f:
     X_test = pickle.load(f)
@@ -57,7 +54,6 @@ y_pred[np.arange(y_pred.shape[0]), idx] = 1
 # acc = categorical_accuracy(y_test, y_pred)
 y = []
 for i in range(0, len(y_test)):
-    # lab = [0, 0, 0, 0, 0, 0, 0, 0]
     lab = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     lab[encoding[y_test[i]] - 1] = 1
     y.append(lab)
